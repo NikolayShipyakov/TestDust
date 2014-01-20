@@ -1,0 +1,27 @@
+<html>
+
+<head>
+<script src="dust.js"></script>
+<script src="jquery-2.0.3.js"></script>
+</head>
+
+<body>
+
+<div id="greeting"></div>
+<script type="text/x-template" id="building-list-item-template">
+        <div class="building-name">{name}</div>
+</script>
+
+<script>
+var tpl = dust.compile($("#building-list-item-template").html(), "tpl");
+dust.loadSource(tpl);
+dust.render("tpl", { name: "Fred" }, function(err, out) {
+  console.log("out: " + out);
+  console.log("err: " + err);
+  $("#greeting").html(out);
+});
+
+</script>
+
+</body>
+</html>
